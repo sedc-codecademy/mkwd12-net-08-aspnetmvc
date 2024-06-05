@@ -9,11 +9,11 @@
 - **Rental**: 
 - **SubscriptionType**: 
 
-- **Genre**: #Enum
+- **Genre**: Enum
 
-- **Language**: #Enum
+- **Language**: Enum
 
-- **Part**: #Enum
+- **Part**: Enum
 
 
 ### Requirements 
