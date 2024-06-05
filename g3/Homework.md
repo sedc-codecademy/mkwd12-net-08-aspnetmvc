@@ -6,8 +6,9 @@
 
 - **User**: 
 - **Movie**: 
-- **Rental**: 
-- **SubscriptionType**: 
+- **Rental**:
+- 
+- **SubscriptionType**: Enum
 
 - **Genre**: Enum
 
