@@ -1,22 +1,5 @@
 # ***__Video rental online store__***
 
-## Application requirements
-
-### Models
-
-- **User**: 
-- **Movie**: 
-- **Rental**:
-- 
-- **SubscriptionType**: Enum
-
-- **Genre**: Enum
-
-- **Language**: Enum
-
-- **Part**: Enum
-
-
 ### Requirements 
 
 - **User Login**: Even though you're not using authentication, you still need a way to identify users.
