@@ -1,0 +1,11 @@
+﻿@model int?
+
+<h1>Welcome to User Page @{
+        if(Model.HasValue)
+        {
+            <p>@Model</p>
+        } else
+        {
+            <p>Povik bez vrednost</p>
+        }
+    }</h1>
