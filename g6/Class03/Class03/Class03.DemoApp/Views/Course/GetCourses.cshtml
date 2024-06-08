@@ -1,0 +1,12 @@
+﻿@using Class03.DemoApp.Models.ViewModels
+
+@model List<CourseViewModel>
+
+@foreach(var course in @Model)
+{
+    <div class="container">
+        <h2>Course name: @course.Name</h2>
+        <p>Number of classes: @course.NumberOfClasses</p>
+    </div>
+    <hr />
+}
