@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Routing.Constraints;
+
 namespace Class02
 {
     public class Program
@@ -33,6 +35,25 @@ namespace Class02
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
 
+            app.MapControllerRoute("all_courses",
+                pattern: "courses/all",
+                defaults: new { controller = "Course", action = "GetAllCourses" });
+
+
+            app.MapControllerRoute("course_by_id",
+                pattern: "courses/{id}",
+                defaults: new { controller = "Course", action = "GetCourseById" });
+
+
+            app.MapControllerRoute("course_by_name",
+                pattern: "courses/byname/{name}",
+                defaults: new { controller = "Course", action = "GetCourseByName" },
+                constraints: new { name = new MinLengthRouteConstraint(5)});
+
+
+            app.MapControllerRoute("course_by_id_or_by_name",
+                pattern: "courses/{id}/{name}",
+                defaults: new { controller = "Course", action = "GetCourseByIdOrName" });
 
 
 
