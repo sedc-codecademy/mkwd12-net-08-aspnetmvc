@@ -63,6 +63,7 @@ namespace Class03Demo.Services
             return mappedStudents;
         }
 
+        // EXERCISE 01
         public StudentCourseDetailDTO? GetStudentCourseDetail(int id)
         {
             Student studentDb = InMemoryDb.Students.FirstOrDefault(s => s.Id == id);
