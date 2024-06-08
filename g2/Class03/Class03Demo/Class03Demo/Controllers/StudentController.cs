@@ -44,5 +44,20 @@ namespace Class03Demo.Controllers
             // NOTE: Handling the ViewModel in the View, as well as creating Views will be discussed in the following lectures
             return Json(students);
         }
+
+        // EXERCISE 01
+        // /student/GetStudentCourseDetails/1
+        [HttpGet("{id}")]
+        public IActionResult GetStudentCourseDetails(int id)
+        {
+            var studentCourseDetails = _studentService.GetStudentCourseDetail(id);
+
+            if (studentCourseDetails is null)
+            {
+                return Content("No user found!");
+            }
+
+            return Json(studentCourseDetails);
+        }
     }
 }

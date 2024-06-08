@@ -2,6 +2,7 @@
 using Class03Demo.Models.DomainModels;
 using Class03Demo.Models.DtoModels;
 using Class03Demo.Models.ViewModels;
+using Class03Demo.Web.Models.DtoModels;
 
 namespace Class03Demo.Services
 {
@@ -60,6 +61,27 @@ namespace Class03Demo.Services
             }).ToList();
 
             return mappedStudents;
+        }
+
+        public StudentCourseDetailDTO? GetStudentCourseDetail(int id)
+        {
+            Student studentDb = InMemoryDb.Students.FirstOrDefault(s => s.Id == id);
+
+            if (studentDb == null)
+            {
+                return null;
+            }
+
+            var studentCourseDto = new StudentCourseDetailDTO
+            {
+                StudentId = studentDb.Id,
+                FullName = studentDb.FirstName + " " + studentDb.LastName,
+                CourseId = studentDb.ActiveCourse.Id,
+                CourseName = studentDb.ActiveCourse.Name,
+                NumberOfClasses = studentDb.ActiveCourse.NumberOfClasses,
+            };
+
+            return studentCourseDto;
         }
     }
 }
