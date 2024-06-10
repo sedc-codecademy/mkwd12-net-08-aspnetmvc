@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+    Layout = "_Layout2";
+}
+@Math.Min(10, 15)
+@* @int a = 5 + 7; *@
+
+@{
+    int a = 5 + 7;
+
+
+    if(a > 10)
+    {
+        <p>Brojot e pogolem od 10 @a @@a</p>
+    } else
+    {
+        <p>Brojot e pomal ili ednakov na 10</p>
+    }
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy. @a</p>
+
+
+<partial name="~/Views/Shared/_Partial1.cshtml"></partial>
