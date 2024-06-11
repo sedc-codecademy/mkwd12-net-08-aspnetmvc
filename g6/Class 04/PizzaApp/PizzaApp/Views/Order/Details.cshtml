@@ -1,0 +1,12 @@
+﻿@using PizzaApp.Models.ViewModels
+@model OrderDetailsViewModel
+
+@if(ViewBag.Title.Length > 0)
+{
+    <h2>@ViewBag.Title by user: @ViewBag.User.Firstname</h2>
+}
+else
+{
+    <h2>Hello</h2>
+}
+<p>@Model.UserFullName ordered @Model.PizzaName. @Model.UserFullName paid @Model.Price by @Model.PaymentMethod</p>
