@@ -1,0 +1,32 @@
+﻿@using Class04.View.Models.DTOModels
+@model StudentWithCourseDTO
+
+<h1>Get Student By Id</h1>
+
+<div>
+    <h4>StudentWithCourseDTO</h4>
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-2">
+            FullName
+        </dt>
+        <dd class="col-sm-10">
+            @Model.FullName
+        </dd>
+        <dt class="col-sm-2">
+            Age
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Age
+        </dd>
+        <dt class="col-sm-2">
+            NameOfCourse
+        </dt>
+        <dd class="col-sm-10">
+            @Model.NameOfCourse
+        </dd>
+    </dl>
+</div>
+<div>
+    <a>@Html.ActionLink("Back to list", "Index")</a>
+</div>
