@@ -1,0 +1,14 @@
+﻿@using Class04.Models.DtoModels
+@model IEnumerable<StudentDto>
+
+    @* partialview *@
+    <div>
+        <span>This is a partial view</span>
+
+        <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.FullName</li>
+        }
+        </ul>
+    </div>
