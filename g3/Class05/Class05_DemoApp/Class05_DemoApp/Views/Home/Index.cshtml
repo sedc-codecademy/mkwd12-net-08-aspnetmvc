@@ -1,0 +1,68 @@
+﻿@model UserViewModel
+
+@{
+    var items = new List<SelectListItem> {
+        new SelectListItem("Програмер", "1"),
+        new SelectListItem("QA", "2"),
+        new SelectListItem("DevOps", "3")
+        };
+
+    var groups = new List<KeyValuePair<string, string>>
+    {
+    new KeyValuePair<string, string>("G1", "Group 1"),
+    new KeyValuePair<string, string>("G2", "Group 2"),
+    new KeyValuePair<string, string>("G3", "Group 3"),
+    new KeyValuePair<string, string>("G4", "Group 4"),
+    new KeyValuePair<string, string>("G5", "Group 5")
+    };
+}
+
+<div class="row">
+    <div class="col-md-5">
+        @Html.ActionLink("Приватност", "Privacy", "Home", new { id = 1 }, new { @class = "btn btn-primary" })
+
+        @Html.TextBox("Input1", "Внесете име", null, new { @class = "form-control mt-5" })
+
+        @Html.TextArea("TextArea1", "", new { @class = "form-control mt-5" })
+
+
+        @Html.DropDownList("Dropdown1", @items, "-- Изберете професија --", new { @class = "form-control mt-5" })
+
+        <div class="form-check">
+            @Html.RadioButton("RadioButton1", "G1", true, new { @class = "form-check-input" })
+            @Html.Label("Label1", "Group 1", new { @class = "form-check-label" })
+            <br />
+            @Html.RadioButton("RadioButton1", "G2", new { @class = "form-check-input" })
+            @Html.Label("Label1", "Group 2", new { @class = "form-check-label" })
+            <br />
+            @Html.RadioButton("RadioButton1", "G3", new { @class = "form-check-input" })
+            @Html.Label("Label1", "Group 3", new { @class = "form-check-label" })
+            <br />
+            @Html.RadioButton("RadioButton1", "G4", new { @class = "form-check-input" })
+            @Html.Label("Label1", "Group 4", new { @class = "form-check-label" })
+            <br />
+            @Html.RadioButton("RadioButton1", "G5", new { @class = "form-check-input" })
+            @Html.Label("Label1", "Group 5", new { @class = "form-check-label" })
+            <br />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <a asp-action="Privacy" asp-controller="Home" asp-route-id="1" class="btn btn-primary">Приватност</a>
+            <input asp-for="FirstName" class="form-control" placeholder="Внесете име" />
+            <textarea asp-for="LastName" class="form-control"></textarea>
+            <select asp-for="Profession" asp-items="@items" class="form-control" style="color: red">
+                <option>-- Изберете професија --</option>
+            </select>
+
+            @for(var i = 0; i < groups.Count; i++)
+            {
+                var radioChecked = false;
+                if (i == 0) radioChecked = true;
+                <input type="radio" asp-for="Group" value="@groups[i].Key" class="form-check-input" checked="@radioChecked" />
+                <label class="form-check-label">@groups[i].Value</label>
+                <br />
+            }
+        </div>
+    </div>

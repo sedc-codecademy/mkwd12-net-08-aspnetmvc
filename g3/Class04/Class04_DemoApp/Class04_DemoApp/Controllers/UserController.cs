@@ -22,5 +22,18 @@ namespace Class04_DemoApp.Controllers
 
             return View(result);
         }
+
+        public IActionResult UsersViewBag()
+        {
+            ViewBag.Users = StaticDb.Users;
+            ViewBag.Nesto = 1;
+            return View();
+        }
+
+        public IActionResult UsersViewData()
+        {
+            ViewData["Users"] = StaticDb.Users;
+            return View();
+        }
     }
 }

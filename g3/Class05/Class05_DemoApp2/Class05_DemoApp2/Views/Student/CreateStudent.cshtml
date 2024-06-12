@@ -1,0 +1,37 @@
+﻿@model StudentViewModel
+@{
+    var genders = new List<KeyValuePair<string, string>>
+    {
+        new KeyValuePair<string, string>("F", "Female"),
+        new KeyValuePair<string, string>("M", "Male")
+    };
+
+    var groups = new List<SelectListItem>
+    {
+    new SelectListItem("Group 1", $"{(int) GroupEnum.G1}"),
+    new SelectListItem("Group 2", $"{(int) GroupEnum.G2}"),
+    new SelectListItem("Group 3", $"{(int) GroupEnum.G3}"),
+    new SelectListItem("Group 4", $"{(int) GroupEnum.G4}"),
+    new SelectListItem("Group 5", $"{(int) GroupEnum.G5}"),
+    new SelectListItem("Group 6", $"{(int) GroupEnum.G6}"),
+    new SelectListItem("Group 7", $"{(int) GroupEnum.G7}")
+    };
+}
+
+<form asp-controller="Student" asp-action="CreateStudent" method="post">
+    <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+    <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+
+    @for (var i = 0; i < genders.Count; i++)
+    {
+        <input type="radio" asp-for="Gender" value="@genders[i].Key" class="form-check-input" />
+        <label class="form-check-label">@genders[i].Value</label>
+        <br />
+    }
+
+    <select asp-for="Group" asp-items="@groups" class="form-control">
+        <option>--Select group--</option>
+    </select>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
