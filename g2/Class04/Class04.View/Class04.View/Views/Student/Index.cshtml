@@ -1,0 +1,35 @@
+﻿@using Class04.View.Models.DTOModels
+@model IEnumerable<StudentWithCourseDTO>
+
+@{
+    var name = "Get All Student";
+}
+<h1>@name</h1>
+
+
+<p>
+    @Html.ActionLink("Add new student", "CreateStudent")
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Age</th>
+            <th>Name of Course</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FullName</td>
+                <td>@item.Age</td>
+                <td>@item.NameOfCourse</td>
+                <td>@Html.ActionLink("Details", "GetStudentById", new {id = item.Id})</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
