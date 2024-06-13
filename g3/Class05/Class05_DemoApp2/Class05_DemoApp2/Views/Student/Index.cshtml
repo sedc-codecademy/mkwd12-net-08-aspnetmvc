@@ -1,0 +1,26 @@
+﻿@model List<StudentViewModel>
+
+<a asp-action="CreateStudent" asp-controller="Student" class="btn btn-primary">Create student</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Group</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <th scope="row">@student.Id</th>
+                <td>@student.FirstName</td>
+                <td>@student.LastName</td>
+                <td>@student.Gender</td>
+                <td>@student.Group</td>
+            </tr>
+        }
+    </tbody>
+</table>
