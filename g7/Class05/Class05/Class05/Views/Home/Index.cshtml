@@ -1,0 +1,64 @@
+﻿@model Student
+
+<h1>HTML HELPERS</h1> 
+
+<h3>TextBox: Generates an input element of type text</h3>
+@Html.TextBox("Name", null, new { @class = "form-control", placeholder = "enter your name"})
+
+<h3>TextArea: Generates a text area element</h3>
+@Html.TextArea(nameof(Model.Description), null, new { @class = "form-control", rows = 3, placeholder = "Enter your description"})
+
+<h3>DropDownList: Generate a select element for a dropdown list</h3>
+@Html.DropDownList(nameof(Model.Gender), new SelectList(new[] { "Male", "Female", "Other" }), "Select Gender", new { @class = "form-control"})
+
+<h3>Checkbox: Generates an input element of type checkbox</h3>
+@Html.CheckBox("Subscribe", true, new { @class = "form-check-input" })
+
+<h3>RadioButton: Generate an input element of type radio button</h3>
+@Html.RadioButton("Role", "Admin", true, new { @class = "form-check-input" }) Admin
+@Html.RadioButton("Role", "User", false, new { @class = "form-check-input" }) User
+
+<h3>ActionLink: Generates an anchor element</h3>
+@Html.ActionLink("Click here", "ActionName", "ControllerName", null, new { @class = "btn btn-primary" })
+
+<h3>HiddenField: Generates a hidden input element</h3>
+@Html.Hidden("Id", 123)
+
+<h3>Password: generates an input element of type password</h3>
+@Html.Password(nameof(Model.Password), null, new { @class = "form-control", placeholder = "Enter your password" })
+
+<h3>And there are many many more...</h3>
+
+<div>
+    <div>This Tag helpers bellow are in a div, bellow this text which is located in a div aswell</div>
+<h1>TAG HELPERS</h1>
+
+<h3>TextBox</h3>
+<input asp-for="Name" class="form-control", placeholder="Enter your name" />
+
+<h3>TextArea</h3>
+<textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter your descirption"></textarea>
+
+<h3>DropDownList</h3>
+<select asp-for="Gender" asp-items='@new SelectList(new [] {"Male", "Female", "Other"})' class="form-control">
+    <option value="">Select Gender</option>
+</select>
+
+<h3>Checkbox</h3>
+<input asp-for="HasSubscription" class="form-check-input" />
+
+<h3>Radio button</h3>
+<input type="radio", asp-for="Role" value="Admin" class="form-check-input" /> Admin
+<input type="radio", asp-for="Role" value="User" class="form-check-input" /> User
+
+<h3>ActionLink</h3>
+<a asp-action="ActionName", asp-controller="ControllerName" class="btn btn-primary">Click Here</a>
+
+<h3>Hidden Field</h3>
+<input type="hidden" asp-for="Id" value="123" />
+
+<h3>Password</h3>
+<input type="password" asp-for="Password" class="form-control", placeholder="enter your password" />
+
+<h3>And there are many many more...</h3>
+</div>
