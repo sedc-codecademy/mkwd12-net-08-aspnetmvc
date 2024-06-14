@@ -1,0 +1,37 @@
+﻿@model StudentViewModel
+
+
+<h1>Tag helpers</h1>
+
+
+<h3>TextBox: Generates an input element of type textbox.</h3>
+<input asp-for="Name" class="form-control" placeholder="Enter your name" />
+
+<h3>Password: Generates an input element of type password.</h3>
+<input type="password" asp-for="Password" class="form-control" placeholder="Enter your password" />
+
+<h3>TextArea: Generates a textarea html element.</h3>
+<textarea asp-for="Description" class="form-control" rows="5" placeholder="Enter your description"></textarea>
+
+
+<h3>DropDownList: Generates a select element for a dropdown list.</h3>
+<select asp-for="Gender" asp-items='@new SelectList(new[] { "Male", "Female", "Other" })' class="form-control">
+    <option value="">Select gender</option>
+</select>
+
+
+<h3>CheckBox: Generates an input element of type checkbox.</h3>
+<input asp-for="HasSubscription" class="form-check" />
+
+
+<h3>RadioButton: Generates an input element of type radio.</h3>
+<input type="radio" asp-for="Role" value="Admin" class="form-check-input" /> Admin
+<input type="radio" asp-for="Role" value="User" class="form-check-input" /> User
+
+
+<h3>ActionLink: Generates an anchor element.</h3>
+<a asp-action="Index" asp-controller="Home" class="btn btn-primary">Go to home page</a>
+
+
+<h3>Hidden: Generates a hidden input element.</h3>
+<input type="hidden" value="123" asp-for="Id" />

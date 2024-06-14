@@ -35,6 +35,8 @@ namespace Class04.View.Controllers
         {
             return View();
         }
+
+
         [HttpPost("create")]
         public IActionResult CreateStudent(CreateStudentVM createStudentVM)
         {

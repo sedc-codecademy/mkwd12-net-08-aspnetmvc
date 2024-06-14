@@ -1,0 +1,14 @@
+﻿
+<h3>@ViewData["Message"]</h3>
+
+
+<h3>Name: @ViewBag.Name</h3>
+
+@* We can't send model data to a view by using ViewData dictionary *@
+@* @ViewData["Student"].Name *@
+
+
+<h3>@ViewBag.Student.Name</h3>
+
+
+<h3>@TempData["FirstName"]</h3>
