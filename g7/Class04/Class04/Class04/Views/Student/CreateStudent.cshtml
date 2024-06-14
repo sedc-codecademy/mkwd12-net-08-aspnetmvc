@@ -1,0 +1,31 @@
+﻿@using Class04.Models.ViewModels
+@model CreateStudentVM
+
+<h1>CreateStudent</h1>
+
+<h4>CreateStudentVM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h2>Create Student</h2>
+        <form method="post" action="create">
+            <div>
+                <label for="FirstName">First Name:</label>
+                <input type="text" id="FirstName" name="FirstName"/>
+            </div>
+            <div>
+                <label for="LastName">Last Name:</label>
+                <input type="text" id="LastName" name="LastName" />
+            </div>
+            <div>
+                <label for="DateOfBirth">Date of Birth:</label>
+                <input type="date" id="DateOfBirth" name="DateOfBirth" />
+            </div>
+            <button type="submit">Create</button>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back To List</a>
+</div>
