@@ -1,0 +1,24 @@
+﻿
+@model OrderDetailsViewModel
+
+@if(ViewBag.Title.Length > 0)
+{
+    <h2>@ViewBag.Title by user: @ViewBag.User.Firstname</h2>
+}
+else
+{
+    <h2>Hello</h2>
+}
+
+@*This is the example from the previous class*@
+@* <p>@Model.UserFullName ordered @Model.PizzaName. @Model.UserFullName paid @Model.Price by @Model.PaymentMethod</p> *@
+
+@*We are calling the partial view to list info about the order*@
+<partial name="~/Views/Shared/Partials/_OrderDetailsPartial.cshtml" for="@Model"/>
+
+
+@*=========HTML Helper============*@
+html: @Html.ActionLink("Back to Orders page", "Index")
+
+@*=========Tag Helper=============*@
+tag: <a  asp-controller="Home" asp-action="Index">Back to home page</a>

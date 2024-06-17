@@ -1,0 +1,42 @@
+﻿@using Class04.Models.DtoModels
+@model IEnumerable<StudentWithCourseDto>
+
+    <h1>Index</h1>
+
+    <p>
+        <a asp-action="create">Create New</a>
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Age
+                </th>
+                <th>
+                    Name of Course
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.FullName
+                </td>
+                <td>
+                    @item.Age
+                </td>
+                <td>
+                    @item.NameOfCourse
+                </td>
+                <td>
+                    @Html.ActionLink("details", "GetStudentById", new { id = item.Id})
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>

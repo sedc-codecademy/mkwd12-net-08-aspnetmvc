@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Class04.Controllers
 {
-    [Route("students")]
+    [Route("student")]
     public class StudentController : Controller
     {
         public IActionResult Index()
