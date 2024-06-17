@@ -20,18 +20,26 @@
 
 <form asp-controller="Student" asp-action="CreateStudent" method="post">
     <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+    <span asp-validation-for="FirstName" class="text-danger"></span>
     <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+    <span asp-validation-for="LastName" class="text-danger"></span>
 
-    @for (var i = 0; i < genders.Count; i++)
-    {
-        <input type="radio" asp-for="Gender" value="@genders[i].Key" class="form-check-input" />
-        <label class="form-check-label">@genders[i].Value</label>
-        <br />
-    }
+    <div>
+        @for (var i = 0; i < genders.Count; i++)
+        {
+            <input type="radio" asp-for="Gender" value="@genders[i].Key" class="form-check-input" />
+            <label class="form-check-label">@genders[i].Value</label>
+            <br />
+        }
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
 
-    <select asp-for="Group" asp-items="@groups" class="form-control">
-        <option>--Select group--</option>
-    </select>
+    <div>
+        <select asp-for="Group" asp-items="@groups" class="form-control">
+            <option>--Select group--</option>
+        </select>
+        <span asp-validation-for="Group" class="text-danger"></span>
+    </div>
 
     <button type="submit" class="btn btn-success">Submit</button>
 </form>
