@@ -19,7 +19,7 @@
 }
 
 <form asp-controller="Student" asp-action="CreateStudent" method="post">
-    <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+    <input asp-for="FirstName" class="form-control" placeholder="First Name" value="@Model.FirstName"/>
     <span asp-validation-for="FirstName" class="text-danger"></span>
     <input asp-for="LastName" class="form-control" placeholder="Last Name" />
     <span asp-validation-for="LastName" class="text-danger"></span>
