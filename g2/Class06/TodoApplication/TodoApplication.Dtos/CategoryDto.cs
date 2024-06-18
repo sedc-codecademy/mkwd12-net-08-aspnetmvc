@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TodoApplication.Domain
+namespace TodoApplication.Dtos
 {
-    public class Status
+    public class CategoryDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool IsSelected { get; set; }
     }
 }

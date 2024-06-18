@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TodoApplication.Domain
+namespace TodoApplication.Dtos
 {
-    public class Todo
+    public class FilterDto
     {
-        public int Id { get; set; }
-        public string Description { get; set; }
-        public DateTime DueDate { get; set; }
+        public List<CategoryDto> Categories { get; set; }
+        public List<StatusDto> Statuses { get; set; }
         public int CategoryId { get; set; }
         public int StatusId { get; set; }
     }
