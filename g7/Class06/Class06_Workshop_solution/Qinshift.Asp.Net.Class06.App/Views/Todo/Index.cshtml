@@ -1,0 +1,52 @@
+﻿@using Qinshift.Asp.Net.Class06.App.Models.Dtos
+
+@model IEnumerable<TodoDto>
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.Partial("~/Views/Todo/Partial/_FilterPartial.cshtml", (FilterDto)ViewBag.Filter)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @if (ViewBag.Error != null)
+        {
+            <h6 class="alert alert-danger">@ViewBag.Error</h6>
+        }
+        <table class="table table-bordered table-striped mt-2">
+            <thead>
+                <tr>
+                    <th>Decription</th>
+                    <th>Category</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th class="w-25"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <form asp-controller="Todo" asp-action="MarkComplete" method="post">
+                    @foreach (TodoDto todo in Model)
+                    {
+                        string overdue = todo.DueDate.Day < DateTime.Now.Day ? "bg-danger" : "";
+                    <tr>
+                        <td>@todo.Description</td>
+                        <td>@todo.Category</td>
+                        <td class="@overdue">@todo.DueDate.ToShortDateString()</td>
+                        <td>@todo.Status</td>
+                        <td>
+                                @if (todo.StatusId == 1)
+                                {
+                                <button type="submit" class="btn btn-outline-primary btn-sm" name="@nameof(TodoDto.Id)" value="@todo.Id">Mark Complete</button>
+                                }
+                        </td>
+                    </tr>
+                    }
+                </form>
+            </tbody>
+        </table>
+        <form asp-action="RemoveComplete" method="post">
+            <a asp-action="AddTodo" class="btn btn-outline-primary">Add new todo</a>
+            <button type="submit" class="btn btn-outline-danger">Remove Complete</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@using Qinshift.Asp.Net.Class06.App.Models.Dtos
+@model FilterDto
+
+
+<form asp-controller="Todo" asp-action="Filter" method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="mb-3">
+                <div class="form-label">Category</div>
+                <select name="categoryId" class="form-select" asp-items="@(new SelectList(Model.Categories, "Id", "Name", Model.CategoryId))">
+                    <option value="0">All</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="mb-3">
+                <div class="form-label">Status</div>
+                <select name="statusId" class="form-select"
+                        asp-items="@(new SelectList(Model.Statuses, "Id", "Name", Model.StatusId))">
+                    <option value="0">All</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3 p-4">
+            <button type="submit" class="btn btn-outline-primary">Filter</button>
+            <a asp-action="Index" class="btn btn-outline-info">Clear</a>
+        </div>
+    </div>
+</form>
