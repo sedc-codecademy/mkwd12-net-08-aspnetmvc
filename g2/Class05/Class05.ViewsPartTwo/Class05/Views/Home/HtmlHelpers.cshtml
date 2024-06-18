@@ -1,0 +1,42 @@
+﻿@model StudentViewModel
+
+@* Html Helper Examples *@
+
+<h1>HTML Helpers in MVC View</h1>
+
+<h3>TextBox: Generates an input element of type textbox.</h3>
+
+@Html.TextBox("Name", null, new { @class = "form-control", placeholder = "Enter some text"} )
+
+
+<h3>TextArea: Generates a textarea html element.</h3>
+@Html.TextArea(nameof(Model.Description), null, new { @class = "form-control", rows = 5, placeholder = "Add something" })
+
+<h3>DropDownList: Generates a select element for a dropdown list.</h3>
+@Html.DropDownList(nameof(Model.Gender), new SelectList(new[] { "Male", "Female", "Other" }), "Select Gender", new { @class = "form-control" })
+
+
+<h3>CheckBox: Generates an input element of type checkbox.</h3>
+@Html.CheckBox("HasSubscription", true, new { @class = "form-check" })
+@* @Html.CheckBoxFor(x => x.HasSubscription) *@
+
+
+<h3>RadioButton: Generates an input element of type radio.</h3>
+@Html.RadioButton("Role", "Admin", true, new { @class = "form-check" }) Admin
+@Html.RadioButton("Role", "User", false, new { @class = "form-check" }) User
+
+
+<h3>Password: Generates an input element of type password.</h3>
+@Html.Password(nameof(Model.Password), null, new { @class = "form-control", placeholder = "Enter your password" })
+
+
+<h3>ActionLink: Generates an anchor element.</h3>
+@Html.ActionLink("To Home", "Index", "Home", null, new { @class = "btn btn-primary" })
+
+
+<h3>Hidden: Generates a hidden input element.</h3>
+@Html.Hidden("Id", 123)
+
+
+
+
