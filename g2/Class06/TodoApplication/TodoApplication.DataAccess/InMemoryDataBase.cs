@@ -49,7 +49,7 @@ namespace TodoApplication.DataAccess
             Todos = new List<Todo>()
             {
                 new Todo(){Id=1, Description="Test todo", DueDate=DateTime.Now.AddDays(3), CategoryId=1, StatusId=1},
-                new Todo(){Id=2, Description="Homework PizzaApp", DueDate=DateTime.Now.AddDays(1), CategoryId=7, StatusId=2}
+                new Todo(){Id=2, Description="Homework PizzaApp", DueDate=DateTime.Now.AddDays(-5), CategoryId=7, StatusId=2}
             };
         }
     }
