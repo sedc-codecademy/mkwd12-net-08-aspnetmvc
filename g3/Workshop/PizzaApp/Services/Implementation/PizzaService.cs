@@ -28,25 +28,50 @@ namespace Services.Implementation
             return pizza.ToModel();
         }
 
-        public void Create(PizzaViewModel pizza)
+        public void Create(PizzaViewModel pizzaModel)
         {
-            throw new NotImplementedException();
+            if(_pizzaRepository.GetAll().Any(x => x.Name.ToLower() == pizzaModel.Name.ToLower()))
+            {
+                throw new Exception("Pizza with that name already exists");
+            }
+
+            var pizza = new Pizza()
+            {
+                Name = pizzaModel.Name,
+                Description = pizzaModel.Description,
+                ImageUrl = pizzaModel.ImageUrl
+            };
+
+            _pizzaRepository.Add(pizza);
+        }
+
+        public void Update(PizzaViewModel pizzaModel)
+        {
+            if (_pizzaRepository.GetAll().Any(x => x.Name.ToLower() == pizzaModel.Name.ToLower() && x.Id != pizzaModel.Id))
+            {
+                throw new Exception("Pizza with that name already exists");
+            }
+
+            var pizza = new Pizza()
+            {
+                Id =pizzaModel.Id,
+                Name = pizzaModel.Name,
+                Description = pizzaModel.Description,
+                ImageUrl = pizzaModel.ImageUrl
+            };
+
+            _pizzaRepository.Update(pizza);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _pizzaRepository.DeleteById(id);
         }
 
         public List<PizzaViewModel> SearchByName(string name)
         {
             var pizzas = _pizzaRepository.SearchByName(name);
             return pizzas.Select(x => x.ToModel()).ToList();
-        }
-
-        public void Update(PizzaViewModel pizza)
-        {
-            throw new NotImplementedException();
         }
     }
 }

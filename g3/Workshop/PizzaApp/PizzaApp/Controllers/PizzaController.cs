@@ -55,5 +55,51 @@ namespace PizzaApp.Controllers
             var items = _pizzaService.SearchByName(filterModel.Name);
             return View("Index", items);
         }
+
+        public IActionResult Create()
+        {
+            var pizza = new PizzaViewModel();
+            return View(pizza);
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromForm] PizzaViewModel model)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            _pizzaService.Create(model);
+
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var pizza = _pizzaService.GetDetails(id);
+            return View(pizza);
+        }
+
+        [HttpPost]
+        public IActionResult Edit([FromForm] PizzaViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            _pizzaService.Update(model);
+
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            _pizzaService.Delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }

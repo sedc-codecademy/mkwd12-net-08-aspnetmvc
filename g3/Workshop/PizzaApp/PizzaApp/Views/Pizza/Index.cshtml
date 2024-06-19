@@ -20,7 +20,9 @@
         <button type="submit" class="btn btn-info">Search</button>
     </form>
 </div>
-
+<div>
+    <a asp-action="Create" class="btn btn-primary">Create new pizza</a>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -37,7 +39,11 @@
                 <th scope="row">@pizza.Id</th>
                 <td>@pizza.Name</td>
                 <td>@pizza.Description</td>
-                <td><a asp-action="Details" asp-controller="Pizza" asp-route-id="@pizza.Id" class="btn btn-primary">Details</a></td>
+                <td>
+                    <a asp-action="Details" asp-controller="Pizza" asp-route-id="@pizza.Id" class="btn btn-primary">Details</a>
+                    <a asp-action="Edit" asp-controller="Pizza" asp-route-id="@pizza.Id" class="btn btn-info">Edit</a>
+                    <a asp-action="Delete" asp-controller="Pizza" asp-route-id="@pizza.Id" class="btn btn-danger">Remove</a>
+                </td>
             </tr>
         }
     </tbody>
