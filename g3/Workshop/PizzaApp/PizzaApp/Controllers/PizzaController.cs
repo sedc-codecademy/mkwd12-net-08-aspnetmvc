@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Services.Implementation;
 using Services.Interfaces;
+using ViewModels;
 
 namespace PizzaApp.Controllers
 {
@@ -25,9 +26,34 @@ namespace PizzaApp.Controllers
             return View(item);
         }
 
-        public IActionResult SearchByName(string name)
+        //CASE 1:
+        //public IActionResult SearchByName(string id)
+        //{
+        //    var items = _pizzaService.SearchByName(id);
+        //    return View("Index", items);
+        //}
+
+        //CASE 2:
+        //public IActionResult SearchByName(string id)
+        //{
+        //    var items = _pizzaService.SearchByName(id);
+        //    return Json(items);
+        //}
+
+        //CASE 3:
+        //[HttpPost]
+        //public IActionResult SearchByName([FromBody] FilterViewModel model)
+        //{
+        //    var items = _pizzaService.SearchByName(model.Name);
+        //    return Json(items);
+        //}
+
+        //CASE 4:
+        [HttpPost]
+        public IActionResult SearchByName([FromForm] FilterViewModel filterModel)
         {
-            return View();
+            var items = _pizzaService.SearchByName(filterModel.Name);
+            return View("Index", items);
         }
     }
 }
