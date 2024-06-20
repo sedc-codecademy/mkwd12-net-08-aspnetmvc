@@ -7,7 +7,7 @@
 <h1>Students Index</h1>
 
 <p>
-
+    <a asp-action="Create">Create New</a>
 </p>
 
 <table class="table">
@@ -33,7 +33,12 @@
                 <td>@student.Age</td>
                 <td>@(string.IsNullOrEmpty(student.Email) ? "N/A" : student.Email)</td>
                 <td>
-                    Link
+                    <a style="margin-right:10px;" asp-action="GetStudentById" asp-route-id="@student.Id">Details (By Route)</a>
+                    <a 
+                        asp-action="GetStudentByQueryFilter" 
+                        asp-route-fullName="@student.FullName" 
+                        asp-route-age="@student.Age"
+                    >Details (With Query)</a>
                 </td>
             </tr>
         }
