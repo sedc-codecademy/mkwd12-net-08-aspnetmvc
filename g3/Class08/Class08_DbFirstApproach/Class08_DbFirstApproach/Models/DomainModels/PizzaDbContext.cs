@@ -13,7 +13,7 @@ namespace Class08_DbFirstApproach.Models.DomainModels
 
         public PizzaDbContext(DbContextOptions<PizzaDbContext> options)
             : base(options)
-        {
+        { 
         }
 
         public virtual DbSet<Ingredient> Ingredients { get; set; } = null!;

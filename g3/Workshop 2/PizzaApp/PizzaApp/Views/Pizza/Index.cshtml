@@ -1,0 +1,99 @@
+﻿@model List<PizzaViewModel>
+
+@{
+    @* Case 4: *@
+    var filterModel = new FilterViewModel();
+}
+
+@* Case 1,2,3: *@
+@* <div class="col-4">
+    <div class="input-group">
+        <input id="SearchFilterInput" class="form-control col-6" placeholder="Пребарај..." />
+        <button id="SearchFilterButton" class="btn btn-info" onclick="search()">Search</button>
+    </div>
+</div> *@
+
+@* Case 4: *@
+<div class="col-4">
+    <form asp-action="SearchByName" method="post" class="input-group">
+        <input asp-for="@filterModel.Name" class="form-control col-6" placeholder="Пребарај..." />
+        <button type="submit" class="btn btn-info">Search</button>
+    </form>
+</div>
+<div>
+    <a asp-action="Create" class="btn btn-primary">Create new pizza</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pizza in Model)
+        {
+            <tr>
+                <th scope="row">@pizza.Id</th>
+                <td>@pizza.Name</td>
+                <td>@pizza.Description</td>
+                <td>
+                    <a asp-action="Details" asp-controller="Pizza" asp-route-id="@pizza.Id" class="btn btn-primary">Details</a>
+                    <a asp-action="Edit" asp-controller="Pizza" asp-route-id="@pizza.Id" class="btn btn-info">Edit</a>
+                    <a asp-action="Delete" asp-controller="Pizza" asp-route-id="@pizza.Id" class="btn btn-danger">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    //CASE 1:
+    // function search() {
+    //     let inputValue = document.getElementById("SearchFilterInput");
+    //     let searchCriteria = inputValue.value;
+
+    //     window.location.href = '/Pizza/SearchByName/' + searchCriteria;
+    // }
+
+    //CASE 2:
+    // function search() {
+    //     let inputValue = document.getElementById("SearchFilterInput");
+    //     let searchCriteria = inputValue.value;
+
+    //     $.ajax({
+    //         type: "GET",
+    //         url: '/Pizza/SearchByName/' + searchCriteria,
+    //         success: function (data) {
+    //             alert(JSON.stringify(data));
+    //         },
+    //         error: function () {
+    //             alert("error");
+    //         }
+    //     });
+    // }
+
+    //CASE 3:
+    // function search() {
+    //     let inputValue = document.getElementById("SearchFilterInput");
+    //     let searchCriteria = inputValue.value;
+    //     let model = { name: searchCriteria };
+
+    //     $.ajax({
+    //         type: "POST",
+    //         url: '/Pizza/SearchByName/',
+    //         data: JSON.stringify(model),
+    //         contentType: "application/json",
+    //         success: function (data) {
+    //             debugger;
+    //             alert(JSON.stringify(data));
+    //         },
+    //         error: function () {
+    //             alert("error");
+    //         }
+    //     });
+    }
+</script>
+
