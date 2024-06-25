@@ -28,12 +28,16 @@
                         <td>@todo.Category</td>
                         <td>@todo.Status</td>
                         <td>
-                            <button class="btn btn-outline-primary btn-sm" value="@todo.Id">Mark Complete</button>
+                            <button type="submit" asp-action="MarkComplete" class="btn btn-outline-primary btn-sm" name="@nameof(TodoDto.Id)" value="@todo.Id">Mark Complete</button>
                         </td>
                     </tr>
                 }
                 </form>
             </tbody>
         </table>
+        <form asp-action="RemoveComplete" method="post">
+            <a asp-action="AddTodo" class="btn btn-outline-primary">Create Todo</a>
+            <button type="submit" class="btn btn-outline-danger">Remove Complete</button>
+        </form>
     </div>
 </div>

@@ -50,5 +50,45 @@ namespace TodoApplication.WebApp.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpPost("mark-complete")]
+        public IActionResult MarkComplete(int id)
+        {
+            var todoMarkComplete = _todoService.MarkComplete(id);
+            if (!todoMarkComplete)
+            {
+                TempData["ErrorMessage"] = "Todo does not exists";
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost("remove-complete")]
+        public IActionResult RemoveComplete()
+        {
+            _todoService.RemoveComplete();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet("add")]
+        public IActionResult AddTodo()
+        {
+            ViewBag.Categories = _filterService.GetCategories();
+            return View("AddTodo");
+        }
+
+        [HttpPost("add")]
+        public IActionResult AddTodo(CreateTodoVM createTodoVM)
+        {
+            if(createTodoVM.CategoryId == 0)
+            {
+                ViewBag.Error = "Please select valid category";
+                ViewBag.Categories = _filterService.GetCategories();
+                return View(createTodoVM);
+            }
+            
+            _todoService.AddTodo(createTodoVM);
+            return RedirectToAction("Index");
+        }
     }
 }
