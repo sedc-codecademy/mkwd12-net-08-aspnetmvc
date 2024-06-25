@@ -59,9 +59,14 @@ namespace Class07Demo.App.Controllers
         // =====> Using [FromForm] binding attribute
         public IActionResult Create([FromForm] CreateStudentVM createStudentVM) 
         {
+            // ModelState.IsValid checks all the data annotations and validation attributes defined in the CreateStudentVM model and returns true if all checks are valid.
+            if (ModelState.IsValid)
+            {
+                StaticDb.Students.Add(createStudentVM.ToStudent());
+                return RedirectToAction("Index");
+            }
             
-            StaticDb.Students.Add(createStudentVM.ToStudent());
-            return RedirectToAction("Index");
+            return View(createStudentVM); // If model is not valid, return the view with validation errors
         }
 
     }

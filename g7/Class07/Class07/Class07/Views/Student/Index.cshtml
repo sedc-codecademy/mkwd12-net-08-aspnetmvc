@@ -1,0 +1,37 @@
+﻿@using Class07.Models.Dtos
+@model IEnumerable<StudentDto>
+
+    <h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "GetStudent", new { id = 1, firstname = "test", Age = 23})
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
