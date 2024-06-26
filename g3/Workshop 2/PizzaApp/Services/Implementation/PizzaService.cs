@@ -9,11 +9,11 @@ namespace Services.Implementation
 {
     public class PizzaService : IPizzaService
     {
-        private PizzaRepository _pizzaRepository;
+        private IPizzaRepository _pizzaRepository;
 
-        public PizzaService()
+        public PizzaService(IPizzaRepository pizzaRepository)
         {
-            _pizzaRepository = new PizzaRepository();
+            _pizzaRepository = pizzaRepository;
         }
 
         public List<PizzaViewModel> GetAll()

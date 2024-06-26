@@ -1,124 +1,60 @@
 ﻿using DataAccess.Interface;
 using DomainModels;
-using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Implementation
 {
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {
+        protected PizzaAppDbContext _dbContext;
+
+        public Repository(PizzaAppDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         public List<T> GetAll()
         {
-            return ReadContent();
+            return _dbContext.Set<T>().AsNoTracking().ToList();
         }
 
         public T GetById(int id)
         {
-            var items = ReadContent();
-            var item = items.FirstOrDefault(x => x.Id == id);
-
-            if(item == null)
-            {
-                throw new KeyNotFoundException($"Entity with id: {id} is not found");
-            }
-            return item;
-        }
-
-        public void Update(T entity)
-        {
-            var items = ReadContent();
-
-            var item = items.FirstOrDefault(x => x.Id == entity.Id);
+            var item = _dbContext.Set<T>().AsNoTracking().Where(x => x.Id == id).FirstOrDefault();
+            //var item = _dbContext.Set<T>().FirstOrDefault(x => x.Id == id);
 
             if (item == null)
             {
-                throw new KeyNotFoundException($"Entity with id: {entity.Id} is not found");
+                throw new KeyNotFoundException($"Entity with id: {id} is not found");
             }
 
-            var indexOfItem = items.IndexOf(item);
-
-            items[indexOfItem] = entity;
-            WriteContent(items);
+            return item;
         }
 
         public void Add(T entity)
         {
-            var items = ReadContent();
-            var nextId = items.Max(x => x.Id) + 1;
+            _dbContext.Add(entity);
+            //_dbContext.Set<T>().Add(entity);
+            _dbContext.SaveChanges();
+        }
 
-            entity.Id = nextId;
-
-            items.Add(entity);
-            WriteContent(items);
+        public void Update(T entity)
+        {
+            _dbContext.Update(entity);
+            _dbContext.SaveChanges();
+            //_dbContext.SaveChangesAsync();
         }
 
         public void Delete(T entity)
         {
-            DeleteById(entity.Id);
+            _dbContext.Remove(entity);
+            _dbContext.SaveChanges();
         }
 
         public void DeleteById(int id)
         {
-            var items = ReadContent();
-
-            var item = items.FirstOrDefault(x => x.Id == id);
-
-            if (item == null)
-            {
-                throw new KeyNotFoundException($"Entity with id: {id} is not found");
-            }
-
-            items.Remove(item);
-            WriteContent(items);
-        }
-
-        public List<T> ReadContent()
-        {
-            string folderPath = Environment.CurrentDirectory + @"\Data\";
-            string filePath = folderPath + typeof(T).Name + "s.json";
-            List<T> items = new List<T>();
-
-            if(!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
-
-            if(!File.Exists(filePath))
-            {
-                return items;
-            }
-
-            using(var sr = new StreamReader(filePath))
-            {
-                var content = sr.ReadToEnd();
-                JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-                items = JsonConvert.DeserializeObject<List<T>>(content, settings);
-               
-            }
-
-            return items;
-        }
-
-        public void WriteContent(List<T> items)
-        {
-            string folderPath = Environment.CurrentDirectory + @"\Data\";
-            string filePath = folderPath + typeof(T).Name + "s.json";
-
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
-
-            if (!File.Exists(filePath))
-            {
-                File.Create(filePath).Close();
-            }
-
-            using(var sw = new StreamWriter(filePath))
-            {
-                JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-                var content = JsonConvert.SerializeObject(items, settings);
-                sw.WriteLine(content);
-            }
+            var item = GetById(id);
+            Delete(item);
         }
     }
 }
