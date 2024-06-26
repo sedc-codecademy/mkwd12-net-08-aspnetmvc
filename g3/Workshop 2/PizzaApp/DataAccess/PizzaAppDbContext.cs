@@ -5,9 +5,9 @@ namespace DataAccess
 {
     public class PizzaAppDbContext : DbContext
     {
-        public PizzaAppDbContext()
-        {
-        }
+        //public PizzaAppDbContext()
+        //{
+        //}
 
         public PizzaAppDbContext(DbContextOptions<PizzaAppDbContext> options) : base(options)
         {

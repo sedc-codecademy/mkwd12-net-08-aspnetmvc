@@ -17,7 +17,7 @@ namespace PizzaApp.Controllers
 
         public IActionResult Index()
         {
-            var retries = int.Parse(_configuration["MaxRetries"]);
+            //var retries = int.Parse(_configuration["MaxRetries"]);
             return View();
         }
 
