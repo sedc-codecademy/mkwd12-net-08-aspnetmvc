@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TodoDto>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Partial("~/Views/Todo/Partial/_FilterPartial.cshtml", (FilterDto)ViewBag.Filter)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped mt-2">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>DueDate</th>
+                    <th>Category Name</th>
+                    <th>Status Name</th>
+                    <th class="w-25">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <form asp-controller="Todo" method="post">
+                @foreach(TodoDto todo in Model)
+                {
+                    string dueDate = todo.DueDate.Day < DateTime.Now.Day ? "bg-danger" : "";
+                    <tr>
+                        <td>@todo.Description</td>
+                        <td class="@dueDate">@todo.DueDate</td>
+                        <td>@todo.Category</td>
+                        <td>@todo.Status</td>
+                        <td>
+                            <button type="submit" asp-action="MarkComplete" class="btn btn-outline-primary btn-sm" name="@nameof(TodoDto.Id)" value="@todo.Id">Mark Complete</button>
+                        </td>
+                    </tr>
+                }
+                </form>
+            </tbody>
+        </table>
+        <form asp-action="RemoveComplete" method="post">
+            <a asp-action="AddTodo" class="btn btn-outline-primary">Create Todo</a>
+            <button type="submit" class="btn btn-outline-danger">Remove Complete</button>
+        </form>
+    </div>
+</div>
