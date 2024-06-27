@@ -1,3 +1,10 @@
+using DataAccess;
+using DataAccess.Implementation;
+using DataAccess.Interface;
+using Microsoft.EntityFrameworkCore;
+using Services.Implementation;
+using Services.Interfaces;
+
 namespace PizzaApp
 {
     public class Program
@@ -8,8 +15,15 @@ namespace PizzaApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<PizzaAppDbContext>(option => option.UseSqlServer(
+                builder.Configuration.GetConnectionString("DefaultConnectionString")
+                ));
 
-            var a = builder.Configuration["MaxRetries"];
+            builder.Services.AddTransient<IPizzaRepository, PizzaRepository>();
+            builder.Services.AddTransient<IPizzaService, PizzaService>();
+            builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+
+            //var a = builder.Configuration["MaxRetries"];
 
             var app = builder.Build();
 

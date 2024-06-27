@@ -9,9 +9,9 @@ namespace PizzaApp.Controllers
     {
         private IPizzaService _pizzaService;
 
-        public PizzaController()
+        public PizzaController(IPizzaService pizzaService)
         {
-            _pizzaService = new PizzaService();
+            _pizzaService = pizzaService;
         }
 
         public IActionResult Index()

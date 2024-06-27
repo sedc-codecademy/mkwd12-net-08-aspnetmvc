@@ -1,0 +1,27 @@
+﻿@using TodoApplication.Dtos.ViewModel
+@model CreateTodoVM
+
+<h2>New Todo</h2>
+
+@if (ViewBag.Error != null)
+{
+    <h5 class="alert alert-warning">@ViewBag.Error</h5>
+}
+
+<form asp-controller="Todo" asp-action="AddTodo" method="post">
+    <div class="md-3">
+        <label asp-for="Description" class="form-label">Description</label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+    <div class="md-3">
+        <label asp-for="CategoryId" class="form-label">Category</label>
+        <select asp-for="CategoryId" class="form-select" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))">
+            <option value="0">None</option>
+        </select>
+    </div>
+    <div class="md-3">
+        <label asp-for="DueDate" class="form-label">Due Date</label>
+        <input asp-for="DueDate" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-outline-primary">Create</button>
+</form>
