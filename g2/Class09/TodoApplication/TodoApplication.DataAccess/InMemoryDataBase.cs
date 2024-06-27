@@ -22,7 +22,7 @@ namespace TodoApplication.DataAccess
                 new Category {Id=1, Name="Work"},
                 new Category {Id=2, Name="Home"},
                 new Category {Id=3, Name="Exercise"},
-                new Category {Id=4, Name="Hobbie"},
+                new Category {Id=4, Name="Hobby"},
                 new Category {Id=5, Name="Shopping"},
                 new Category {Id=6, Name="Freetime"},
                 new Category {Id=7, Name="Homework"}

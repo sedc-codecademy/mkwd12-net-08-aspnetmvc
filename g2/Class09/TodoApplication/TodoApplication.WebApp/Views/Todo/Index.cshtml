@@ -18,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                <form asp-controller="Todo" method="post">
+                <form asp-controller="Todo" asp-action="MarkComplete" method="post">
                 @foreach(TodoDto todo in Model)
                 {
                     string dueDate = todo.DueDate.Day < DateTime.Now.Day ? "bg-danger" : "";
@@ -28,7 +28,7 @@
                         <td>@todo.Category</td>
                         <td>@todo.Status</td>
                         <td>
-                            <button type="submit" asp-action="MarkComplete" class="btn btn-outline-primary btn-sm" name="@nameof(TodoDto.Id)" value="@todo.Id">Mark Complete</button>
+                            <button @(todo.Status == "Completed" ? "disabled" : "") type="submit" class="btn btn-outline-primary btn-sm" name="@nameof(TodoDto.Id)" value="@todo.Id">Mark Complete</button>
                         </td>
                     </tr>
                 }
