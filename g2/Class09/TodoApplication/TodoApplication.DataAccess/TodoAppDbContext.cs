@@ -3,21 +3,30 @@ using TodoApplication.Domain;
 
 namespace TodoApplication.DataAccess
 {
+    /// <summary>
+    ///     Defines and configures the database context for our entities, representing the interaction (session) with the database
+    /// </summary>
     public class TodoAppDbContext : DbContext
     {
         // =====> Defining database tables
-        DbSet<Todo> Todo { get; set; }
-        DbSet<Status> Status { get; set; }
-        DbSet<Category> Category { get; set; }
+        // DbSet<T> => represents a collection of entities of type T that can be queried and saved
+        // It corresponds to a table in the database where the properties in the entities represent the table columns
+        public DbSet<Todo> Todo { get; set; }
+        public DbSet<Status> Status { get; set; }
+        public DbSet<Category> Category { get; set; }
+
+        public TodoAppDbContext() { }
 
         public TodoAppDbContext(DbContextOptions<TodoAppDbContext> options) : base(options)
         {
-            
         }
 
+        // =====> Override the inherited method from the DbContext class used to configure relationships, constraints, seed data etc...
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // =====> Configure relationships 
+            // =====> Configure relationships and properties using Fluent API
+            // The Fluent API is a way to configure your entity models in EF Core by using method chaining, providing an alternative to Data Annotations
+
             modelBuilder.Entity<Todo>()
                 .HasOne(t => t.Status)
                 .WithMany()
@@ -47,8 +56,8 @@ namespace TodoApplication.DataAccess
             );
 
             modelBuilder.Entity<Todo>().HasData(
-                new Todo() { Id = 1, Description = "Read EF Documentation", DueDate = DateTime.Now.AddDays(4), CategoryId = 1, StatusId = 1 },
-                new Todo() { Id = 2, Description = "Basketball", DueDate = DateTime.Now.AddDays(-3), CategoryId = 4, StatusId = 2 }
+                new Todo() { Id = 1, Description = "Read EF Documentation", DueDate = new DateTime(year: 2024, month: 7, day: 30), CategoryId = 1, StatusId = 1 },
+                new Todo() { Id = 2, Description = "Basketball", DueDate = new DateTime(2024, 6, 25), CategoryId = 4, StatusId = 2 }
             );
 
             //modelBuilder.Entity<Todo>().Property(p => p.Description).HasMaxLength(100);

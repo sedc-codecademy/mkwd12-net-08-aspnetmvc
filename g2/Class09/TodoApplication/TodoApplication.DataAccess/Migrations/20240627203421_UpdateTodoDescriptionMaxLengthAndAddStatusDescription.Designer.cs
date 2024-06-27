@@ -12,8 +12,8 @@ using TodoApplication.DataAccess;
 namespace TodoApplication.DataAccess.Migrations
 {
     [DbContext(typeof(TodoAppDbContext))]
-    [Migration("20240627173022_Init")]
-    partial class Init
+    [Migration("20240627203421_UpdateTodoDescriptionMaxLengthAndAddStatusDescription")]
+    partial class UpdateTodoDescriptionMaxLengthAndAddStatusDescription
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -86,6 +86,9 @@ namespace TodoApplication.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -120,7 +123,8 @@ namespace TodoApplication.DataAccess.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
@@ -142,7 +146,7 @@ namespace TodoApplication.DataAccess.Migrations
                             Id = 1,
                             CategoryId = 1,
                             Description = "Read EF Documentation",
-                            DueDate = new DateTime(2024, 7, 1, 19, 30, 22, 650, DateTimeKind.Local).AddTicks(9512),
+                            DueDate = new DateTime(2024, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             StatusId = 1
                         },
                         new
@@ -150,7 +154,7 @@ namespace TodoApplication.DataAccess.Migrations
                             Id = 2,
                             CategoryId = 4,
                             Description = "Basketball",
-                            DueDate = new DateTime(2024, 6, 24, 19, 30, 22, 650, DateTimeKind.Local).AddTicks(9547),
+                            DueDate = new DateTime(2024, 6, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             StatusId = 2
                         });
                 });

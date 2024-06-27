@@ -89,12 +89,12 @@ namespace TodoApplication.DataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "Todo",
                 columns: new[] { "Id", "CategoryId", "Description", "DueDate", "StatusId" },
-                values: new object[] { 1, 1, "Read EF Documentation", new DateTime(2024, 7, 1, 19, 30, 22, 650, DateTimeKind.Local).AddTicks(9512), 1 });
+                values: new object[] { 1, 1, "Read EF Documentation", new DateTime(2024, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 });
 
             migrationBuilder.InsertData(
                 table: "Todo",
                 columns: new[] { "Id", "CategoryId", "Description", "DueDate", "StatusId" },
-                values: new object[] { 2, 4, "Basketball", new DateTime(2024, 6, 24, 19, 30, 22, 650, DateTimeKind.Local).AddTicks(9547), 2 });
+                values: new object[] { 2, 4, "Basketball", new DateTime(2024, 6, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Todo_CategoryId",

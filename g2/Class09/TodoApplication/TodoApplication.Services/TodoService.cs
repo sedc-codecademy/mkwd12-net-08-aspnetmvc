@@ -1,4 +1,5 @@
-﻿using TodoApplication.DataAccess.Implementations;
+﻿using TodoApplication.DataAccess.EFImplementations;
+using TodoApplication.DataAccess.Implementations;
 using TodoApplication.DataAccess.Interfaces;
 using TodoApplication.Domain;
 using TodoApplication.Dtos.Dto;
@@ -16,6 +17,7 @@ namespace TodoApplication.Services
         public TodoService()
         {
             _todoRepository = new TodoRepository();
+            //_categoryRepository = new EFCategoryRepository();
             _categoryRepository = new CategoryRepository();
             _statusRepository = new StatusRepository();
         }
