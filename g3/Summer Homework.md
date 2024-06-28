@@ -114,6 +114,4 @@ Academy Management App++ is designed to facilitate efficient management of educa
 3. **Create Views**: Design user interfaces for different roles.
 4. **Build Controllers**: Handle interactions between users, views, and models.
 
----
 
-You can copy and paste this text into your README file. Let me know if you need any changes or additional details!
