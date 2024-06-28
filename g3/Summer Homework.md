@@ -1,5 +1,5 @@
 ## Academy Management App++
-
+## The solution should include everything we have learned so far, including MVC
 User Roles & Actions
 Admin
 
@@ -47,7 +47,7 @@ Notifications
 Email Alerts: Send notifications to users (e.g., new grades for students, changes in subjects for trainers).
 User Experience
 
-Responsive Design: Ensure the app is accessible on various devices (desktop, tablet, mobile).
+
 User-friendly UI: Design an intuitive interface for all user roles.
 MVC Design Implementation
 Models
@@ -83,8 +83,9 @@ Trainer Assigns Grade to Non-Enrolled Student: Notify that the student is not en
 Student Accesses Grades with No Subjects Assigned: Notify that no subjects are currently assigned and suggest contacting the admin.
 This enhanced set of requirements and MVC design will provide a robust foundation for the Academy Management app, ensuring it is scalable, maintainable, and user-friendly.
 
-Next Steps
+## Next Steps
 Design Database Schema: Outline tables and relationships for storing users, subjects, grades, etc.
+
 Develop Models: Implement data handling and business logic.
 Create Views: Design user interfaces for different roles.
 Build Controllers: Handle interactions between users, views, and models.
