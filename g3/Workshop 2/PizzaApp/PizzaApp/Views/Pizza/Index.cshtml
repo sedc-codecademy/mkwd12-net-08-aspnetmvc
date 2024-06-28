@@ -29,6 +29,7 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
+            <th scope="col">Type</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -39,6 +40,7 @@
                 <th scope="row">@pizza.Id</th>
                 <td>@pizza.Name</td>
                 <td>@pizza.Description</td>
+                <td>@pizza.PizzaType</td>
                 <td>
                     <a asp-action="Details" asp-controller="Pizza" asp-route-id="@pizza.Id" class="btn btn-primary">Details</a>
                     <a asp-action="Edit" asp-controller="Pizza" asp-route-id="@pizza.Id" class="btn btn-info">Edit</a>

@@ -4,6 +4,7 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(PizzaAppDbContext))]
-    partial class PizzaAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240628160959_PizzaTypeColumn")]
+    partial class PizzaTypeColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,7 +45,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Ingredients", (string)null);
+                    b.ToTable("Ingredients");
                 });
 
             modelBuilder.Entity("DomainModels.MenuItem", b =>
@@ -69,7 +71,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("SizeId");
 
-                    b.ToTable("MenuItems", (string)null);
+                    b.ToTable("MenuItems");
                 });
 
             modelBuilder.Entity("DomainModels.Order", b =>
@@ -95,7 +97,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("DomainModels.OrderItem", b =>
@@ -124,7 +126,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderItems", (string)null);
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("DomainModels.Pizza", b =>
@@ -152,7 +154,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pizzas", (string)null);
+                    b.ToTable("Pizzas");
                 });
 
             modelBuilder.Entity("DomainModels.PizzaIngredient", b =>
@@ -178,7 +180,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("PizzaId");
 
-                    b.ToTable("PizzaIngredients", (string)null);
+                    b.ToTable("PizzaIngredients");
                 });
 
             modelBuilder.Entity("DomainModels.Role", b =>
@@ -195,7 +197,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles", (string)null);
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("DomainModels.Size", b =>
@@ -216,7 +218,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sizes", (string)null);
+                    b.ToTable("Sizes");
                 });
 
             modelBuilder.Entity("DomainModels.Status", b =>
@@ -233,7 +235,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses", (string)null);
+                    b.ToTable("Statuses");
                 });
 
             modelBuilder.Entity("DomainModels.Topping", b =>
@@ -259,7 +261,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("OrderItemId");
 
-                    b.ToTable("Toppings", (string)null);
+                    b.ToTable("Toppings");
                 });
 
             modelBuilder.Entity("DomainModels.User", b =>
@@ -298,7 +300,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("DomainModels.UserInfo", b =>
@@ -324,7 +326,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserInfos", (string)null);
+                    b.ToTable("UserInfos");
                 });
 
             modelBuilder.Entity("DomainModels.MenuItem", b =>
