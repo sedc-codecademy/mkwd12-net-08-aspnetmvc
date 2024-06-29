@@ -1,0 +1,36 @@
+﻿@using Class09_EF.Dtos.StudentDtos
+@model StudentDto
+
+<h1>GetStudentById</h1>
+
+<div>
+    <h4>Student: @Model.FirstName @Model.LastName</h4>
+</div>
+<hr />
+<dl class="row">
+    <dt class="col-sm-2">
+        Id:
+    </dt>
+    <dd class="col-sm-10">
+        @Model.Id
+    </dd>
+    <dt class="col-sm-2">
+        First Name:
+    </dt>
+    <dd class="col-sm-10">
+        @Model.FirstName
+    </dd>
+    <dt class="col-sm-2">
+        Last Name:
+    </dt>
+    <dd class="col-sm-10">
+        @Model.LastName
+    </dd>
+    <dt class="col-sm-2">
+        Birth date:
+    </dt>
+    <dd class="col-sm-10">
+        @Model.DateOfBirth
+    </dd>
+
+</dl>
