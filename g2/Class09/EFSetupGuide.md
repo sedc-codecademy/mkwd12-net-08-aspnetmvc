@@ -11,6 +11,11 @@
 
 ### 4. Migrations
 
+Open the Package Manager Console in Visual Studio <br>
+* Navigate to <i>Tools > NuGet Package Manager > Package Manager Console</i> <br>
+* Set the Default project to the one where your DbContext is located
+* Execute the commands you need
+
 #### Add Migration Command
 
 ```cmd
