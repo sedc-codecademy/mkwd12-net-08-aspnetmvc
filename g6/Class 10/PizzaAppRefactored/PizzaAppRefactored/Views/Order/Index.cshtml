@@ -1,0 +1,30 @@
+﻿@model List<OrderDetailsViewModel>
+
+<div class="text-center">
+    <h2 class="display-4">List of orders:</h2>
+</div>
+<div>
+    <a asp-controller="Order" asp-action="CreateOrder">Create order</a>
+</div>
+<br />
+<div class="row">
+    @foreach (var order in @Model)
+    {
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem; margin-left:10px;">
+            <div class="card-body">
+                <h5 class="card-title">User: @order.UserFullName</h5>
+                <ol>
+                    @foreach (var pizza in order.PizzaNames)
+                    {
+                        <li>@pizza</li>
+                    }
+                </ol>
+            </div>
+            <div class="card-footer bg-transparent border-success">Payment method: @order.PaymentMethod | <strong>@order.Price DEN</strong></div>
+            <div>
+                <a style="color:white"; asp-controller="Order" asp-action="Details" asp-route-id="@order.Id">Details</a>
+                <a style="color:white"; asp-controller="Order" asp-action="DeleteOrder" asp-route-id="@order.Id">Delete</a>
+            </div>
+        </div>
+    }
+</div>

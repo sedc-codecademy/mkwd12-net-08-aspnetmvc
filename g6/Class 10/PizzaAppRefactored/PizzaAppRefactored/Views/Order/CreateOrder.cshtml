@@ -1,0 +1,31 @@
+﻿@model OrderDialogViewModel
+
+<h2>Create Order</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateOrder" method="post">
+            <div class="form-group">
+                <label asp-for="PizzaStore" class="control-label"></label>
+                <input asp-for="PizzaStore" class="form-control" />
+                <span asp-validation-for="PizzaStore" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PaymentMethod" class="control-label"></label>
+                <select asp-for="PaymentMethod" class="form-control" asp-items="Html.GetEnumSelectList<PaymentMethodEnum>()"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IsDelivered" class="control-label"></label>
+                <input asp-for="IsDelivered" type="checkbox" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="@(new SelectList(ViewBag.Users, "Id", "UserFullName"))"></select>
+            </div>
+            <button type="submit" class="btn btn-success mt-3">Create</button>
+        </form>
+    </div>
+</div>

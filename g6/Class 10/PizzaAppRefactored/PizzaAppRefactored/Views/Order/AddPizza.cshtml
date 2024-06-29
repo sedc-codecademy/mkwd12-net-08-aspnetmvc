@@ -1,0 +1,29 @@
+﻿@model AddPizzaToOrderViewModel
+
+<h2>Add pizza to order:</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Order" asp-action="AddPizzaPost" method="post">
+            <input type="hidden" asp-for="OrderId" />
+            <div class="form-group">
+                <label asp-for="PizzaId" class="control-label"></label>
+                <select class="form-control" asp-for="PizzaId" asp-items="@(new SelectList(ViewBag.Pizzas, "Id", "PizzaName"))"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PizzaSize" class="control-label"></label>
+                <select class="form-control" asp-for="PizzaSize" asp-items="Html.GetEnumSelectList<PizzaSizeEnum>()"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input class="form-control" asp-for="Quantity" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input class="form-control" asp-for="Price" />
+            </div>
+            <button type="submit" class="btn btn-success">Create</button>
+        </form>
+    </div>
+
+</div>

@@ -1,0 +1,32 @@
+﻿@model OrderDetailsViewModel
+<div class="text-center">
+    <h2 class="display-4">Order details</h2>
+</div>
+
+<div class="card">
+    <a asp-controller="Order" asp-action="AddPizza" asp-route-id="@Model.Id">Add pizza</a>
+    <div class="card-body">
+        <h5 class="card-title">
+            User @Model.UserFullName
+        </h5>
+        <p class="card-text">Payment method: @Model.PaymentMethod | @Model.Price MKD</p>
+        <div class="row">
+            <div>Pizzas:</div>
+            @foreach (var pizza in Model.PizzaNames)
+            {
+                <div class="card" style="width: 18rem; margin-left: 15px;">
+                    @* <img class="card-img-top" src="https://static.toiimg.com/thumb/53110049.cms?width=1200&height=900">*@
+                    <img src="/images/pizza.jpg" class="card-img-top" alt="Card image caption">
+                    <div class="card-body">
+                        <h3 class="text-center">@pizza</h3>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Order" asp-action="Index">Back to orders</a>
+</div>
