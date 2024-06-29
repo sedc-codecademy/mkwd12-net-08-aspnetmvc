@@ -1,5 +1,9 @@
 ﻿@model PizzaViewModel
 
+@{
+    var types = (List<SelectListItem>)ViewData["Types"];
+}
+
 <form asp-action="Edit" asp-controller="Pizza" method="post">
     <input type="hidden" asp-for="Id" />
 
@@ -16,6 +20,9 @@
     <label asp-for="ImageUrl" class="form-label"></label>
     <input asp-for="ImageUrl" class="form-control" />
     <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    <br />
+
+    <select asp-for="PizzaTypeValue" asp-items="@types" class="form-control"></select>
     <br />
 
     <button type="submit" class="btn btn-success">Save</button>

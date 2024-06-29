@@ -43,7 +43,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Ingredients");
+                    b.ToTable("Ingredients", (string)null);
                 });
 
             modelBuilder.Entity("DomainModels.MenuItem", b =>
@@ -69,7 +69,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("SizeId");
 
-                    b.ToTable("MenuItems");
+                    b.ToTable("MenuItems", (string)null);
                 });
 
             modelBuilder.Entity("DomainModels.Order", b =>
@@ -95,7 +95,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("DomainModels.OrderItem", b =>
@@ -124,7 +124,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("OrderItems", (string)null);
                 });
 
             modelBuilder.Entity("DomainModels.Pizza", b =>
@@ -147,9 +147,12 @@ namespace DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("PizzaType")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Pizzas");
+                    b.ToTable("Pizzas", (string)null);
                 });
 
             modelBuilder.Entity("DomainModels.PizzaIngredient", b =>
@@ -175,7 +178,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("PizzaId");
 
-                    b.ToTable("PizzaIngredients");
+                    b.ToTable("PizzaIngredients", (string)null);
                 });
 
             modelBuilder.Entity("DomainModels.Role", b =>
@@ -192,7 +195,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("DomainModels.Size", b =>
@@ -213,7 +216,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sizes");
+                    b.ToTable("Sizes", (string)null);
                 });
 
             modelBuilder.Entity("DomainModels.Status", b =>
@@ -230,7 +233,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses");
+                    b.ToTable("Statuses", (string)null);
                 });
 
             modelBuilder.Entity("DomainModels.Topping", b =>
@@ -256,7 +259,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("OrderItemId");
 
-                    b.ToTable("Toppings");
+                    b.ToTable("Toppings", (string)null);
                 });
 
             modelBuilder.Entity("DomainModels.User", b =>
@@ -295,7 +298,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("DomainModels.UserInfo", b =>
@@ -321,7 +324,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserInfos");
+                    b.ToTable("UserInfos", (string)null);
                 });
 
             modelBuilder.Entity("DomainModels.MenuItem", b =>

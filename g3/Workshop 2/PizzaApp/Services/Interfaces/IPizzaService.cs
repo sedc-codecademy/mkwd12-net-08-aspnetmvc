@@ -1,4 +1,5 @@
-﻿using ViewModels;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using ViewModels;
 
 namespace Services.Interfaces
 {
@@ -10,5 +11,6 @@ namespace Services.Interfaces
         void Update(PizzaViewModel pizza);
         void Delete(int id);
         List<PizzaViewModel> SearchByName(string name);
+        List<SelectListItem> GetTypeOptions();
     }
 }

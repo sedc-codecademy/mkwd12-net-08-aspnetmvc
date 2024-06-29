@@ -3,6 +3,7 @@ using DataAccess.Interface;
 using DomainModels;
 using Mappers;
 using Services.Interfaces;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ViewModels;
 
 namespace Services.Implementation
@@ -39,7 +40,8 @@ namespace Services.Implementation
             {
                 Name = pizzaModel.Name,
                 Description = pizzaModel.Description,
-                ImageUrl = pizzaModel.ImageUrl
+                ImageUrl = pizzaModel.ImageUrl,
+                PizzaType = (PizzaTypeEnum) pizzaModel.PizzaTypeValue
             };
 
             _pizzaRepository.Add(pizza);
@@ -57,7 +59,8 @@ namespace Services.Implementation
                 Id =pizzaModel.Id,
                 Name = pizzaModel.Name,
                 Description = pizzaModel.Description,
-                ImageUrl = pizzaModel.ImageUrl
+                ImageUrl = pizzaModel.ImageUrl,
+                PizzaType = (PizzaTypeEnum)pizzaModel.PizzaTypeValue
             };
 
             _pizzaRepository.Update(pizza);
@@ -73,5 +76,22 @@ namespace Services.Implementation
             var pizzas = _pizzaRepository.SearchByName(name);
             return pizzas.Select(x => x.ToModel()).ToList();
         }
+
+        public List<SelectListItem> GetTypeOptions()
+        {
+            return new List<SelectListItem>
+            {
+                new SelectListItem()
+                {
+                    Value = ((int) PizzaTypeEnum.Standard).ToString(),
+                    Text = PizzaTypeEnum.Standard.ToString()
+                },
+                new SelectListItem()
+                {
+                    Value = ((int) PizzaTypeEnum.Premium).ToString(),
+                    Text = PizzaTypeEnum.Premium.ToString()
+                }
+            };
+        } 
     }
 }

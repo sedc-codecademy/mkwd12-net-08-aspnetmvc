@@ -17,5 +17,8 @@ namespace ViewModels
         [DisplayName("Image URL")]
         //[RegularExpression("https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)")]
         public string ImageUrl { get; set; }
+        public string? PizzaType { get; set; }
+        [Required]
+        public int PizzaTypeValue { get; set; }
     }
 }

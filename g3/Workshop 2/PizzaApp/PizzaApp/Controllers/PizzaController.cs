@@ -59,6 +59,9 @@ namespace PizzaApp.Controllers
         public IActionResult Create()
         {
             var pizza = new PizzaViewModel();
+            var types = _pizzaService.GetTypeOptions();
+            ViewBag.Types = types;
+
             return View(pizza);
         }
 
@@ -67,6 +70,8 @@ namespace PizzaApp.Controllers
         {
             if(!ModelState.IsValid)
             {
+                var types = _pizzaService.GetTypeOptions();
+                ViewBag.Types = types;
                 return View(model);
             }
 
@@ -79,6 +84,8 @@ namespace PizzaApp.Controllers
         public IActionResult Edit(int id)
         {
             var pizza = _pizzaService.GetDetails(id);
+            var types = _pizzaService.GetTypeOptions();
+            ViewData["Types"] = types;
             return View(pizza);
         }
 
@@ -87,6 +94,8 @@ namespace PizzaApp.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var types = _pizzaService.GetTypeOptions();
+                ViewData["Types"] = types;
                 return View(model);
             }
 

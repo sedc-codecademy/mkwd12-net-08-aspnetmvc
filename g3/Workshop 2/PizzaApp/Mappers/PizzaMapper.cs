@@ -12,13 +12,15 @@ namespace Mappers
                 Id = pizza.Id,
                 Name = pizza.Name,
                 Description = pizza.Description,
-                ImageUrl = pizza.ImageUrl
+                ImageUrl = pizza.ImageUrl,
+                PizzaTypeValue = (int) pizza.PizzaType,
+                PizzaType = pizza.PizzaType.ToString()
             };
 
             return model;
         }
 
-        public static PizzaViewModel TohortModel(this Pizza pizza)
+        public static PizzaViewModel ToShortModel(this Pizza pizza)
         {
             var model = new PizzaViewModel
             {
