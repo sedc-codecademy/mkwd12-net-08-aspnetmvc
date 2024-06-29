@@ -6,6 +6,7 @@ using TodoApplication.DataAccess.Interfaces;
 using TodoApplication.Domain;
 using TodoApplication.Services;
 using TodoApplication.Services.Interfaces;
+using TodoApplication.WebApp.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,6 +51,8 @@ builder.Services.AddTransient<IFilterService, FilterService>();
 #endregion
 
 var app = builder.Build();
+
+app.UseMiddleware<UrlLoggerMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
