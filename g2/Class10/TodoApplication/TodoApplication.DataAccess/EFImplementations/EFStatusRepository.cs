@@ -19,7 +19,7 @@ namespace TodoApplication.DataAccess.EFImplementations
 
         public IEnumerable<Status> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Status.ToList();
         }
 
         public Status GetById(int id)
@@ -33,12 +33,14 @@ namespace TodoApplication.DataAccess.EFImplementations
 
         public void Add(Status entity)
         {
-            throw new NotImplementedException();
+            _context.Add(entity);
+            _context.SaveChanges();
         }
 
         public void Update(Status entity)
         {
-            throw new NotImplementedException();
+            _context.Update(entity);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)

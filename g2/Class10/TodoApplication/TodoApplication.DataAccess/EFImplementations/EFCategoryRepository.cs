@@ -18,7 +18,7 @@ namespace TodoApplication.DataAccess.EFImplementations
 
         public IEnumerable<Category> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Category.ToList();
         }
 
         public Category GetById(int id)
@@ -28,12 +28,14 @@ namespace TodoApplication.DataAccess.EFImplementations
 
         public void Add(Category entity)
         {
-            throw new NotImplementedException();
+            _context.Category.Add(entity);
+            _context.SaveChanges();
         }
 
         public void Update(Category entity)
         {
-            throw new NotImplementedException();
+            _context.Category.Update(entity);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)

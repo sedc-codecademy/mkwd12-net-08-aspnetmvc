@@ -24,12 +24,25 @@ string connectionString = builder.Configuration.GetConnectionString("TodoAppConn
 builder.Services.AddDbContext<TodoAppDbContext>(options => options.UseSqlServer(connectionString));
 #endregion
 
+
 #region Register Repositories
+// Here we register the dependencies using Dependency Injection
+
 // ===> If we want to use InMemoryDb implementation
-builder.Services.AddTransient<ITodoRepository, TodoRepository>();
-builder.Services.AddTransient<IRepository<Category>, CategoryRepository>();
-builder.Services.AddTransient<IRepository<Status>, StatusRepository>();
+// Transient lifetime: A new instance of the service is created every time it is requested.
+//builder.Services.AddTransient<ITodoRepository, TodoRepository>();
+// Scoped lifetime: A new instance of the service is created once per client request (HTTP request in a web application).
+//builder.Services.AddScoped<ITodoRepository, TodoRepository>();
+// Singleton lifetime: A single instance of the service is created the first time it is requested and then reused for every subsequent request.
+//builder.Services.AddSingleton<ITodoRepository, TodoRepository>();
+
+// ===> If we want to use EF implementation
+builder.Services.AddTransient<ITodoRepository, EFTodoRepository>();
+// Everywhere we request ITodoRepository in the constructor, we get new instace from EFTodoRepository class
+builder.Services.AddTransient<IRepository<Status>, EFStatusRepository>();
+builder.Services.AddTransient<IRepository<Category>, EFCategoryRepository>();
 #endregion
+
 
 #region Register Services
 builder.Services.AddTransient<ITodoService, TodoService>();
